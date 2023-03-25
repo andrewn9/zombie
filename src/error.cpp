@@ -8,7 +8,7 @@
 
 #include "error.hpp"
 
-#define	GAME_NAME	"zombie singular: "
+#define	GAME_NAME	"zombie singular"
 
 namespace errlog
 {

@@ -2,6 +2,8 @@
 #include <stdbool.h>
 
 #include <SDL2/SDL.h>
+
+#include "error.hpp"
 #include "game.hpp"
 #include "player.hpp"
 #include "zombie.hpp"
@@ -28,6 +30,11 @@ int main(int argc, char **argv)
 			case SDL_QUIT:
 				delete game;
 				return 0;
+				break;
+			case SDL_MOUSEMOTION:
+				game->mouse.x = e.motion.x;
+				game->mouse.y = e.motion.y;
+				PINF("move moused to (%d, %d)", game->mouse.x, game->mouse.y);
 				break;
 			}
 

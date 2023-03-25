@@ -1,10 +1,12 @@
 #include "game.hpp"
 #include "error.hpp"
 
-Game::Game()
+Game::Game() :
+	window(nullptr),
+	renderer(nullptr),
+	key_state(nullptr),
+	mouse({0, 0})
 {
-  window = NULL;
-  renderer = NULL;
 }
 
 void Game::init()
@@ -36,7 +38,7 @@ void Game::init()
 				refreshRate = dm.refresh_rate;
 
 		ts = 60.0 / refreshRate;
-		PERR("%d %lf\n", refreshRate, ts);
+		PINF("refresh rate: %d, timestep: %lf", refreshRate, ts);
 	}
 	
 	// Get keyboard state access

@@ -19,5 +19,5 @@ namespace errlog
 	void pErrorStart();
 	void pErrorEnd();
 	void pInfoStart();
-	void pEndStart();
+	void pInfoEnd();
 }

@@ -1,7 +1,7 @@
-#include "image.h"
-#include "game.h"
+#include "image.hpp"
+#include "game.hpp"
 #include "dir.hpp"
-#include "player.h"
+#include "player.hpp"
 
 class Gun
 {
