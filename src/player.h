@@ -1,5 +1,8 @@
 #include "image.h"
 #include "game.h"
+#include "dir.hpp"
+
+#define WALK_SPEED  8
 
 class Player
 {

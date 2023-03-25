@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 #include "game.h"
 #include "player.h"
+#include "zombie.h"
 
 int main(int argc, char **argv)
 {
@@ -13,6 +14,7 @@ int main(int argc, char **argv)
 	game->init();
 
 	Player *player = new Player(50,50,50,50,game);
+	Zombie *zombie = new Zombie(150,150,50,50,game);
 
 	SDL_Event e;
 	bool game_running = true;
@@ -32,6 +34,10 @@ int main(int argc, char **argv)
 		}
 		game->update();
 		player->update();
+
+		zombie->targetX=player->x;
+		zombie->targetY=player->y;
+		zombie->update();
 	}
 
 	exit_code = 0;

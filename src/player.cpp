@@ -9,7 +9,7 @@ Player::Player(int x, int y, int w, int h, Game *game)
 
     this->game = game;
 
-    image = new Image("res/player.png", x, y, w, h);
+    image = new Image(DIR_RES"player.png", x, y, w, h);
     game->stuffToDraw.push_back(image);
 }
 
@@ -17,19 +17,19 @@ void Player::update()
 {
     if(game->key_state[SDL_SCANCODE_W])
     {
-        y--;
+        y-=WALK_SPEED;
     }
     if(game->key_state[SDL_SCANCODE_A])
     {
-        x--;
+        x-=WALK_SPEED;
     }
     if(game->key_state[SDL_SCANCODE_S])
     {
-        y++;
+        y+=WALK_SPEED;
     }
     if(game->key_state[SDL_SCANCODE_D])
     {
-        x++;
+        x+=WALK_SPEED;
     }
 
     image->setX(x);
