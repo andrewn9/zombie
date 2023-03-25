@@ -1,4 +1,5 @@
-#include "game.h"
+#include "game.hpp"
+#include "error.hpp"
 
 Game::Game()
 {
@@ -8,6 +9,7 @@ Game::Game()
 
 void Game::init()
 {
+	// Create window
 	window = SDL_CreateWindow(
 		"zombies",
 		SDL_WINDOWPOS_UNDEFINED,
@@ -17,13 +19,33 @@ void Game::init()
 		SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE
 	);
 
+	// Create renderer
 	const int ren_flags = SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC;
 	renderer = SDL_CreateRenderer(window, -1, ren_flags);
-    key_state = SDL_GetKeyboardState(NULL);
+
+	// Calculate game timestep
+	{
+		SDL_DisplayMode dm;
+		int displayIndex = SDL_GetWindowDisplayIndex(window);
+
+		// Monitror refresh rate (set at its default value)
+		int refreshRate = 60;
+
+		if (SDL_GetDesktopDisplayMode(displayIndex, &dm) == 0)
+			if (dm.refresh_rate != 0)
+				refreshRate = dm.refresh_rate;
+
+		ts = 60.0 / refreshRate;
+		PERR("%d %lf\n", refreshRate, ts);
+	}
+	
+	// Get keyboard state access
+	key_state = SDL_GetKeyboardState(NULL);
 }
 
 Game::~Game()
 {
+	// Free resources
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();

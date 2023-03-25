@@ -1,5 +1,5 @@
-#include "image.h"
-#include "game.h"
+#include "image.hpp"
+#include "game.hpp"
 #include "dir.hpp"
 
 #define WALK_SPEED  3

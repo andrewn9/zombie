@@ -2,9 +2,9 @@
 #include <stdbool.h>
 
 #include <SDL2/SDL.h>
-#include "game.h"
-#include "player.h"
-#include "zombie.h"
+#include "game.hpp"
+#include "player.hpp"
+#include "zombie.hpp"
 
 int main(int argc, char **argv)
 {

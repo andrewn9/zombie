@@ -1,4 +1,4 @@
-#include "zombie.h"
+#include "zombie.hpp"
 
 Zombie::Zombie(int x, int y, int w, int h, Game *game)
 {

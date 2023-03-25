@@ -1,4 +1,4 @@
-#include "image.h"
+#include "image.hpp"
 
 Image::Image(string path, int x, int y, int w, int h)
 {
