@@ -32,5 +32,23 @@ void Game::draw()
 {
     SDL_SetRenderDrawColor(renderer,255,255,255,255);
 	SDL_RenderClear(renderer);
+
+    for (auto image : stuffToDraw) {
+        SDL_Surface* surface = image->getImage();
+        SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+        SDL_Rect* srect = NULL;
+
+
+		SDL_Rect drect = 
+        {
+            image->getX(),
+            image->getY(),
+            image->getWidth(),
+            image->getHeight()
+        };
+
+		SDL_RenderCopy(renderer, texture, srect, &drect);
+    }
+
 	SDL_RenderPresent(renderer);
 }

@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include "game.h"
+#include "player.h"
 
 int main(int argc, char **argv)
 {
@@ -10,6 +11,8 @@ int main(int argc, char **argv)
 
 	Game *game = new Game();
 	game->init();
+
+	Player *player = new Player(50,50,50,50,game);
 
 	SDL_Event e;
 	bool game_running = true;
@@ -22,6 +25,7 @@ int main(int argc, char **argv)
 			{
 			case SDL_QUIT:
 				delete game;
+				return 0;
 				break;
 			}
 			game->draw();
