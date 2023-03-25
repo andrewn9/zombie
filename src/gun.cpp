@@ -11,7 +11,7 @@ Gun::Gun(Player *plr, Game *game)
 
 void Gun::update()
 {
-    image->setX(player->x);
+    image->setX(player->x+15);
     image->setY(player->y);
 }
 

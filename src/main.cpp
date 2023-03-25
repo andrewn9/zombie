@@ -5,6 +5,7 @@
 #include "game.hpp"
 #include "player.hpp"
 #include "zombie.hpp"
+#include "gun.hpp"
 
 int main(int argc, char **argv)
 {
@@ -15,6 +16,7 @@ int main(int argc, char **argv)
 
 	Player *player = new Player(50,50,50,50,game);
 	Zombie *zombie = new Zombie(150,150,50,50,game);
+	Gun *gun = new Gun(player,game);
 
 	SDL_Event e;
 	bool game_running = true;
@@ -34,6 +36,7 @@ int main(int argc, char **argv)
 		}
 		game->update();
 		player->update();
+		gun->update();
 
 		zombie->targetX=player->x;
 		zombie->targetY=player->y;
