@@ -1,23 +1,24 @@
 #include "bullet.hpp"
+#include "game.hpp"
+#include "sound.hpp"
 
-Bullet::Bullet(Gun *gun, Game *game)
+Bullet::Bullet(int x, int y, int w, int h) :
+	m_x(x),
+	m_y(y),
+	m_w(w),
+	m_h(h)
 {
-    this->x=gun->x;
-    this->y=gun->y;
-    this->w=gun->w;
-    this->h=gun->h;
-
-    this->game = game;
-    image = new Image(DIR_RES"bullet.png", x, y, w, h);
-    game->stuffToDraw.push_back(image);
+    image = new Image(DIR_RES "bullet.png", x, y, w, h);
+    stuffToDraw.push_back(image);
+			snd::ss.playSfx(snd::snare);
 }
 
 void Bullet::update()
 {
-    x+=xspeed;
-    y+=yspeed;
-    image->setX(x);
-    image->setY(y);
+    m_x+=xspeed * game::ts;
+    m_y+=yspeed * game::ts;
+    image->setX(m_x);
+    image->setY(m_y);
 }
 
 //zomb

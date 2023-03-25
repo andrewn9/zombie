@@ -16,9 +16,9 @@ int main(int argc, char **argv)
 	Game *game = new Game();
 	game->init();
 
-	Player *player = new Player(50,50,50,50,game);
-	Zombie *zombie = new Zombie(150,150,50,50,game);
-	Gun *gun = new Gun(player,game);
+	Player *player = new Player(50,50,50,50);
+	Zombie *zombie = new Zombie(150,150,50,50);
+	Gun *gun = new Gun(player);
 
 	SDL_Event e;
 	bool game_running = true;
@@ -34,9 +34,17 @@ int main(int argc, char **argv)
 				return 0;
 				break;
 			case SDL_MOUSEMOTION:
-				game->mouse.x = e.motion.x;
-				game->mouse.y = e.motion.y;
-				PINF("move moused to (%d, %d)", game->mouse.x, game->mouse.y);
+				game::mouse.x = e.motion.x;
+				game::mouse.y = e.motion.y;
+				PINF("move moused to (%d, %d)", game::mouse.x, game::mouse.y);
+				break;
+			case SDL_MOUSEBUTTONDOWN:
+				switch (e.button.button)
+				{
+				case SDL_BUTTON_LEFT:
+					gun->shoot();
+					break;
+				}
 				break;
 			}
 

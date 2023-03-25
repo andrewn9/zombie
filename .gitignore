@@ -4,3 +4,5 @@ zombie
 zombie.exe
 build
 *.dll
+
+*test*

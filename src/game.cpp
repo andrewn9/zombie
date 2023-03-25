@@ -1,11 +1,21 @@
 #include "game.hpp"
 #include "error.hpp"
 
+namespace game
+{
+	// timestep
+	double ts;
+	// Input devices
+        const Uint8 *key_state;
+	Mouse mouse;
+}
+
+std::vector<Image*> stuffToDraw;
+std::vector<Bullet*> stuffToShot;
+
 Game::Game() :
 	window(nullptr),
-	renderer(nullptr),
-	key_state(nullptr),
-	mouse({0, 0})
+	renderer(nullptr)
 {
 }
 
@@ -37,12 +47,12 @@ void Game::init()
 			if (dm.refresh_rate != 0)
 				refreshRate = dm.refresh_rate;
 
-		ts = 60.0 / refreshRate;
-		PINF("refresh rate: %d, timestep: %lf", refreshRate, ts);
+		game::ts = 60.0 / refreshRate;
+		PINF("refresh rate: %d, timestep: %lf", refreshRate, game::ts);
 	}
 	
 	// Get keyboard state access
-	key_state = SDL_GetKeyboardState(NULL);
+	game::key_state = SDL_GetKeyboardState(NULL);
 }
 
 Game::~Game()
@@ -78,6 +88,10 @@ void Game::draw()
         };
 
 		SDL_RenderCopy(renderer, texture, srect, &drect);
+    }
+    for (auto b : stuffToShot)
+    {
+	b->update();
     }
 
 	SDL_RenderPresent(renderer);

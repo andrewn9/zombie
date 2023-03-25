@@ -1,16 +1,16 @@
+
+#pragma once
+
 #include "image.hpp"
-#include "game.hpp"
 #include "dir.hpp"
 #include "player.hpp"
 
 class Gun
 {
     public:
-        Gun(Player *plr, Game *game);
+        Gun(Player *plr);
         void update();
+	void shoot();
         Player* player;
         Image* image;
-        Game* game;
 };
-
-#pragma once

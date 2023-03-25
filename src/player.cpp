@@ -1,35 +1,33 @@
 #include "player.hpp"
+#include "game.hpp"
 
-Player::Player(int x, int y, int w, int h, Game *game)
+Player::Player(int x, int y, int w, int h)
 {
     this->x=x;
     this->y=y;
     this->w=w;
     this->h=h;
-
-    this->game = game;
-
     image = new Image(DIR_RES"player.png", x, y, w, h);
-    game->stuffToDraw.push_back(image);
+    stuffToDraw.push_back(image);
 }
 
 void Player::update()
 {
-    if(game->key_state[SDL_SCANCODE_W])
+    if(game::key_state[SDL_SCANCODE_W])
     {
-        y-=WALK_SPEED;
+        y-=PLAYER_WALK_SPEED;
     }
-    if(game->key_state[SDL_SCANCODE_A])
+    if(game::key_state[SDL_SCANCODE_A])
     {
-        x-=WALK_SPEED;
+        x-=PLAYER_WALK_SPEED;
     }
-    if(game->key_state[SDL_SCANCODE_S])
+    if(game::key_state[SDL_SCANCODE_S])
     {
-        y+=WALK_SPEED;
+        y+=PLAYER_WALK_SPEED;
     }
-    if(game->key_state[SDL_SCANCODE_D])
+    if(game::key_state[SDL_SCANCODE_D])
     {
-        x+=WALK_SPEED;
+        x+=PLAYER_WALK_SPEED;
     }
 
     image->setX(x);

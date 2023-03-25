@@ -23,7 +23,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 	mkdir -p $(dir $@)
 	$(CXX) $(CXXFLAGS) $(DEPFLAGS) -c $< -o $@
 
-.DELETE_ON_ERROR:
+#.DELETE_ON_ERROR:
 .PHONY: clean
 clean:
 	rm $(BINPATH)

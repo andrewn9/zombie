@@ -71,4 +71,6 @@ namespace snd
 		freeAllSfx();
 		Mix_Quit();
 	}
+
+	SoundSystem ss;
 }

@@ -1,28 +1,27 @@
 #include "zombie.hpp"
+#include "game.hpp"
 
-Zombie::Zombie(int x, int y, int w, int h, Game *game)
+Zombie::Zombie(int x, int y, int w, int h)
 {
     this->x=x;
     this->y=y;
     this->w=w;
     this->h=h;
 
-    this->game = game;
-
     image = new Image(DIR_RES"zombie.png", x, y, w, h);
-    game->stuffToDraw.push_back(image);
+    stuffToDraw.push_back(image);
 }
 
 void Zombie::update()
 {
     if(targetX<x)
-        x-=WALK_SPEED;
+        x-=ZOM_WALK_SPEED;
     if(targetX>x)
-        x+=WALK_SPEED;
+        x+=ZOM_WALK_SPEED;
     if(targetY<y)
-        y-=WALK_SPEED;
+        y-=ZOM_WALK_SPEED;
     if(targetY>y)
-        y+=WALK_SPEED;
+        y+=ZOM_WALK_SPEED;
     image->setX(x);
     image->setY(y);
 }

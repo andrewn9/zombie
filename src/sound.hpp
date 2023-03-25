@@ -29,4 +29,6 @@ namespace snd
 		~SoundSystem();
 		void playSfx(Sfx *sfx);
 	};
+
+	extern SoundSystem ss;
 }
