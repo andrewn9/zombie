@@ -88,6 +88,7 @@ void Game::draw()
         };
 
 		SDL_RenderCopy(renderer, texture, srect, &drect);
+	SDL_DestroyTexture(texture);
     }
     for (auto b : stuffToShot)
     {
