@@ -25,6 +25,7 @@ class Image
         int _y;
         int _w;
         int _h;
+        
 };
 
 #pragma once
