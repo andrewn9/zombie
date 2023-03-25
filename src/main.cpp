@@ -28,9 +28,10 @@ int main(int argc, char **argv)
 				return 0;
 				break;
 			}
-			game->draw();
-		}
 
+		}
+		game->update();
+		player->update();
 	}
 
 	exit_code = 0;

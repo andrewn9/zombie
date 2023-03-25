@@ -11,11 +11,13 @@ class Game {
     public:
         SDL_Window *window;
         SDL_Renderer *renderer;
+        const Uint8 *key_state;
 
         Game();
         ~Game();
 
         void init();
+        void update();
         void draw();
 
         std::vector<Image*> stuffToDraw;

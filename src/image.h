@@ -21,10 +21,10 @@ class Image
 
     private:
         SDL_Surface *image; 
-        int x;
-        int y;
-        int w;
-        int h;
+        int _x;
+        int _y;
+        int _w;
+        int _h;
 };
 
 #pragma once

@@ -19,6 +19,7 @@ void Game::init()
 
 	const int ren_flags = SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC;
 	renderer = SDL_CreateRenderer(window, -1, ren_flags);
+    key_state = SDL_GetKeyboardState(NULL);
 }
 
 Game::~Game()
@@ -26,6 +27,11 @@ Game::~Game()
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
+}
+
+void Game::update()
+{
+    draw();
 }
 
 void Game::draw()
